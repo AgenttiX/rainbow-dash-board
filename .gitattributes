@@ -1,4 +1,4 @@
-* text=auto
+* text=auto eol=lf
 
 *.css text eol=lf
 *.js text eol=lf
@@ -9,3 +9,5 @@
 *.html text eol=lf
 *.md text eol=lf
 .gitattributes text eol=lf
+.eslintrc text eol=lf
+.editorconfig text eol=lf
