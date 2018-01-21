@@ -4,10 +4,11 @@
         "node": true
     },
     "parserOptions": {
-        "ecmaVersion": 6
+        "ecmaVersion": 2017
     },
     "rules": {
         "curly": ["error", "multi-line"],
-        "comma-dangle": ["error", "always-multiline"]
+        "comma-dangle": ["error", "always-multiline"],
+        "semi": ["error", "always"]
     }
 }

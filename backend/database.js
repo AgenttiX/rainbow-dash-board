@@ -1,4 +1,4 @@
-const knex = require('')
+const knex = require('');
 const envConfig = require('./config');
 
 const config = {
@@ -25,4 +25,4 @@ function connect() {
 module.exports = {
   config,
   connect,
-}
+};
