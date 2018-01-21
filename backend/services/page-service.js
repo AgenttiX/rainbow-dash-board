@@ -4,6 +4,6 @@ async function getPages() {
   // Return data
 }
 
-module.exorts = {
+module.exports = {
   getPages,
 };
