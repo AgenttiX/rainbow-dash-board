@@ -5,6 +5,8 @@
   "dependencies": {
     "eslint": "^4.16.0",
     "eslint-plugin-inferno": "^7.4.0",
+    "express": "^4.16.2",
+    "express-file-router": "0.0.8",
     "inferno": "^3.10.1",
     "inferno-component": "^3.10.1",
     "inferno-scripts": "5.0.0",
