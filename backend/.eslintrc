@@ -1,0 +1,13 @@
+{
+    "extends": "eslint:recommended",
+    "env": {
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "rules": {
+        "curly": ["error", "multi-line"],
+        "comma-dangle": ["error", "always-multiline"]
+    }
+}

@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 import { render } from 'inferno';
 import App from './App';
 

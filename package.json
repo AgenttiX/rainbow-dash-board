@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint": "^4.16.0",
+    "eslint-plugin-inferno": "^7.4.0",
     "inferno": "^3.10.1",
     "inferno-component": "^3.10.1",
-    "inferno-scripts": "5.0.0"
+    "inferno-scripts": "5.0.0",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1"
   },
   "scripts": {
     "start": "inferno-scripts start",
     "build": "inferno-scripts build",
     "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject"
+    "eject": "inferno-scripts eject",
+    "eslint": "eslint backend fixtures src"
   }
 }
