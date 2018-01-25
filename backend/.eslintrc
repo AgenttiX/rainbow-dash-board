@@ -10,6 +10,8 @@
         "curly": ["error", "multi-line"],
         "comma-dangle": ["error", "always-multiline"],
         "semi": ["error", "always"],
-        "no-process-env": "error"
+        "no-process-env": "error",
+        "no-console": "error",
+        "max-len": ["error", { "code": 80 }]
     }
 }

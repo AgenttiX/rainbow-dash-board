@@ -1,4 +1,3 @@
-const knex = require('');
 const envConfig = require('./config');
 
 const config = {
@@ -8,7 +7,7 @@ const config = {
     tableName: 'migrations',
   },
   pool: {
-    min: 0,
+    min: 1,
     max: 7,
   },
 };
@@ -18,7 +17,7 @@ let client = null;
 function connect() {
   if (client) return client;
 
-  client = knex(config);
+  client = require('knex')(config);
   return client;
 }
 

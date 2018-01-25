@@ -21,7 +21,7 @@
         "curly": ["error", "multi-line"],
         "comma-dangle": ["error", "always-multiline"],
         "semi": ["error", "always"],
-        "no-process-env": "error",
+        "max-len": ["error", { "code": 80 }],
         "inferno/jsx-uses-inferno": "error",
         "inferno/jsx-uses-vars": "error"
     }
