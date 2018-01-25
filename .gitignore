@@ -22,3 +22,6 @@ yarn-error.log*
 output.log
 
 *.orig
+
+# Prevent secrets from ending up in the repository
+.env
