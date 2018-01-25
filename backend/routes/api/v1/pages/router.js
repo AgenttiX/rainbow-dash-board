@@ -1,8 +1,11 @@
 const pageController = require('../../../../controllers/page-controller');
+const { wrapController } = require('../../../../controllers/controller-utils');
 
 module.exports = function(router) {
-  return router.get(
+  router.get(
     '/',
-    pageController.getPages
+    wrapController(pageController.getPages)
   );
+
+  return router;
 };
