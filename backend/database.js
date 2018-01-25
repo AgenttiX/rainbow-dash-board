@@ -17,7 +17,11 @@ let client = null;
 function connect() {
   if (client) return client;
 
-  client = require('knex')(config);
+  const knex = require('knex')(config);
+
+  client = {
+    knex,
+  };
   return client;
 }
 
