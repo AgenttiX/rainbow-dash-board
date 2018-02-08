@@ -1,7 +1,7 @@
 const path = require('path');
 const winston = require('winston');
 const _ = require('lodash');
-const config = require('./config');
+const config = require('../config');
 
 function setLevel(logger, level) {
   _.each(logger.transports, (transport) => {

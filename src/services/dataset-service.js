@@ -8,7 +8,7 @@ async function getDatasets(opts) {
     limit: 100,
   });
 
-  const rows = await db.knex('dataset')
+  const rows = await db.knex('datasets')
     .select()
     .limit(opts.limit)
     .offset(opts.offset);
@@ -17,7 +17,7 @@ async function getDatasets(opts) {
 }
 
 async function getDataset(datasetId) {
-  const rows = await db.knex('dataset')
+  const rows = await db.knex('datasets')
     .select()
     .where('id', datasetId)
     .limit(1);

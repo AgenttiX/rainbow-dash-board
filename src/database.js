@@ -1,4 +1,4 @@
-const envConfig = require('./config');
+const envConfig = require('../config');
 
 const config = {
   client: 'pg',

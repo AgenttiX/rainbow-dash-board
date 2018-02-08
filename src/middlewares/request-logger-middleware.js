@@ -1,6 +1,6 @@
 const morgan = require('morgan');
 const logger = require('../logger')('request');
-const config = require('../config');
+const config = require('../../config');
 
 let middleware = (req, res, next) => { next(); };
 

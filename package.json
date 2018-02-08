@@ -6,9 +6,6 @@
     "change-case": "^3.0.1",
     "express": "^4.16.2",
     "express-file-router": "0.0.8",
-    "inferno": "^3.10.1",
-    "inferno-component": "^3.10.1",
-    "inferno-scripts": "5.0.0",
     "joi": "^13.1.1",
     "knex": "^0.14.2",
     "lodash": "^4.17.4",
@@ -18,13 +15,15 @@
   },
   "devDependencies": {
     "eslint": "^4.16.0",
-    "eslint-plugin-inferno": "^7.4.0"
+    "mocha": "^5.0.0",
+    "nodemon": "^1.14.12"
   },
   "scripts": {
-    "start": "inferno-scripts start",
-    "build": "inferno-scripts build",
-    "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject",
-    "eslint": "eslint backend fixtures src"
+    "start": "node ./src/index.js",
+    "watch": "nodemon ./src/index.js",
+    "test": "bash ./tools/test-local.sh",
+    "test-ci": "bash ./tools/test-ci.sh",
+    "mocha": "mocha ./tests/**/*.test.js",
+    "eslint": "eslint migrations src tests tools config.js knexfile.js"
   }
 }
