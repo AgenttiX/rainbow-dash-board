@@ -1,17 +1,33 @@
 {
+    "plugins": ["node"],
     "extends": "eslint:recommended",
+    "root": true,
     "env": {
-        "node": true
+        "node": true,
+        "es6": true
     },
     "parserOptions": {
-        "ecmaVersion": 2017
+        "ecmaVersion": 2017,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
     },
     "rules": {
         "curly": ["error", "multi-line"],
         "comma-dangle": ["error", "always-multiline"],
         "semi": ["error", "always"],
+        "quotes": ["error", "single"],
         "no-process-env": "error",
         "no-console": "error",
-        "max-len": ["error", { "code": 80 }]
+        "max-len": ["error", { "code": 80 }],
+        "prefer-destructuring": "error",
+        "func-names": ["error", "always"],
+        "no-trailing-spaces": "error",
+        "no-else-return": ["error", { "allowElseIf": false }],
+        "no-return-await": "error",
+        "node/no-missing-require": "error",
+        "node/no-unsupported-features": "error",
+        "node/shebang": "error",
+        "node/no-deprecated-api": "error"
     }
 }

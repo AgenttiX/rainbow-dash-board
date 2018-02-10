@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const common = require('./common-schemas');
 
-const dataset = Joi.object().keys({
+const datasetSchema = Joi.object().keys({
   id: common.incremental.required(),
   name: Joi.string().required(),
   tableName: Joi.string().required(),
@@ -10,4 +10,6 @@ const dataset = Joi.object().keys({
   updatedAt: common.updatedAt,
 });
 
-module.exports = dataset;
+module.exports = {
+  datasetSchema,
+};

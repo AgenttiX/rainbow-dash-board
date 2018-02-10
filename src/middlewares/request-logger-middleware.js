@@ -6,7 +6,7 @@ let middleware = (req, res, next) => { next(); };
 
 if (!config.DISABLE_REQUST_LOGGER) {
   logger.stream = {
-    write: function(message){
+    write: function write(message){
         logger.info(message);
     },
   };

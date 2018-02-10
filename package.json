@@ -2,10 +2,14 @@
   "name": "rainbow-dash-board",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^8.9.0"
+  },
   "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
     "change-case": "^3.0.1",
     "express": "^4.16.2",
-    "express-file-router": "0.0.8",
     "joi": "^13.1.1",
     "knex": "^0.14.2",
     "lodash": "^4.17.4",
@@ -14,16 +18,19 @@
     "winston": "^2.4.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.16.0",
+    "eslint-plugin-node": "^6.0.0",
     "mocha": "^5.0.0",
-    "nodemon": "^1.14.12"
+    "nodemon": "^1.14.12",
+    "supertest": "^3.0.0"
   },
   "scripts": {
-    "start": "node ./src/index.js",
-    "watch": "nodemon ./src/index.js",
+    "start": "node ./index.js",
+    "watch": "nodemon ./index.js",
     "test": "bash ./tools/test-local.sh",
     "test-ci": "bash ./tools/test-ci.sh",
-    "mocha": "mocha ./tests/**/*.test.js",
-    "eslint": "eslint migrations src tests tools config.js knexfile.js"
+    "mocha": "mocha --exit ./tests/**/*.test.js",
+    "eslint": "eslint migrations src tests tools config.js index.js knexfile.js"
   }
 }

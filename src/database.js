@@ -12,17 +12,17 @@ const config = {
   },
 };
 
-let client = null;
+let knex = null;
 
 function connect() {
-  if (client) return client;
+  if (!knex) {
+    knex = require('knex')(config);
+  }
 
-  const knex = require('knex')(config);
-
-  client = {
+  return {
     knex,
+    config,
   };
-  return client;
 }
 
 module.exports = {

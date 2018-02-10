@@ -6,6 +6,12 @@ const Joi = require('joi');
 let wrapController = fn => (...args) => fn(...args).catch(args[2]);
 
 function validate(data, schema) {
+  if (!data) {
+    const error = new Error('Missing request parameters!');
+    error.status = 400;
+    throw error;
+  }
+
   const result = Joi.validate(data, schema);
 
   if (result.error) {

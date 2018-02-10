@@ -4,7 +4,7 @@ exports.up = knex =>
     table.string('name').notNullable();
     table.string('table_name').notNullable();
     table.specificType('columns', 'text[]').notNullable();
-    table.timestamps();
+    table.timestamps(true, true);
 
     table.index('table_name', 'datasets_table_name_idx');
   });

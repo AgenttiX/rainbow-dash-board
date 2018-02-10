@@ -2,6 +2,12 @@ const _ = require('lodash');
 const db = require('../database').connect();
 const serviceUtils = require('./service-utils');
 
+const throwNotFound = (datasetId) => {
+  const error = new Error(`Dataset ${datasetId} not found!`);
+  error.status = 404;
+  throw error;
+};
+
 async function getDatasets(opts) {
   _.defaults(opts, {
     offset: 0,
@@ -21,17 +27,55 @@ async function getDataset(datasetId) {
     .select()
     .where('id', datasetId)
     .limit(1);
-  
+
   if (rows.length === 0) {
-    const error = new Error(`Dataset ${datasetId} not found!`);
-    error.status = 404;
-    throw error;
+    throwNotFound(datasetId);
   }
 
   return serviceUtils.toCamelCase(rows[0]);
 }
 
+async function addDataset(dataset) {
+  const dbDataset = serviceUtils.toSnakeCase(dataset);
+
+  delete dbDataset.id; // Id will be decided by the database
+
+  const rows = await db.knex('datasets')
+    .insert(dbDataset)
+    .returning('*');
+
+  return serviceUtils.toCamelCase(rows[0]);
+}
+
+async function updateDataset(dataset) {
+  const dbDataset = serviceUtils.toSnakeCase(dataset);
+
+  const rows = await db.knex('datasets')
+    .where('id', dbDataset.id)
+    .update({
+      ...dbDataset,
+      updated_at: db.knex.raw('now()'),
+      created_at: undefined,
+    })
+    .returning('*');
+
+  return serviceUtils.toCamelCase(rows[0]);
+}
+
+async function deleteDataset(datasetId) {
+  const result = await db.knex('datasets')
+    .where('id', datasetId)
+    .del();
+
+  if (result === 0) {
+    throwNotFound(datasetId);
+  }
+}
+
 module.exports = {
   getDatasets,
   getDataset,
+  addDataset,
+  updateDataset,
+  deleteDataset,
 };
