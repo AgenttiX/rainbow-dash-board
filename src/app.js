@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 const logger = require('./logger')(__filename);
 const config = require('../config');
 const requestLoggerMiddleware =
   require('./middlewares/request-logger-middleware');
 const errorMiddleware = require('./middlewares/error-middleware');
 const routes = require('./routes');
+
+const swaggerDocument = YAML.load('./docs/swagger/index.yaml');
 
 class App {
   constructor() {
@@ -15,6 +19,12 @@ class App {
 
   async startAsync() {
     this.expressApp.use(requestLoggerMiddleware);
+
+    this.expressApp.use(
+      '/api/api-docs',
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    );
 
     this.expressApp.use(bodyParser.json());
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
