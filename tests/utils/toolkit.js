@@ -4,7 +4,7 @@ const request = require('supertest');
 async function processRequest(req, reqName, code = 200) {
   try {
     const res = await req.expect(code);
-    return res.body.result;
+    return res.body;
   } catch (e) {
     throw new Error(`${reqName}: ${e.message}`);
   }

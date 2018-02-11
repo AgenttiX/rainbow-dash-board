@@ -1,6 +1,5 @@
 const logger = require('../logger')(__filename);
 const pageService = require('../services/page-service');
-const controllerUtils = require('./controller-utils');
 
 async function getPages(req, res) {
   logger.silly('pageController.getPages');
@@ -9,7 +8,7 @@ async function getPages(req, res) {
 
   const pages = await pageService.getPages();
 
-  controllerUtils.sendResult(res, pages);
+  res.status(200).json(pages);
 }
 
 module.exports = {

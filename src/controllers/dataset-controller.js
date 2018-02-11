@@ -20,7 +20,7 @@ async function getDatasets(req, res) {
 
   const datasets = await datasetService.getDatasets(opts);
 
-  controllerUtils.sendResult(res, datasets);
+  res.status(200).json(datasets);
 }
 
 async function getDataset(req, res) {
@@ -33,7 +33,7 @@ async function getDataset(req, res) {
 
   const dataset = await datasetService.getDataset(datasetId);
 
-  controllerUtils.sendResult(res, dataset);
+  res.status(200).json(dataset);
 }
 
 async function postDataset(req, res) {
@@ -46,7 +46,7 @@ async function postDataset(req, res) {
 
   const newDataset = await datasetService.addDataset(dataset);
 
-  controllerUtils.sendResult(res, newDataset);
+  res.status(200).json(newDataset);
 }
 
 async function putDataset(req, res) {
@@ -59,7 +59,7 @@ async function putDataset(req, res) {
 
   const updatedDataset = await datasetService.updateDataset(dataset);
 
-  controllerUtils.sendResult(res, updatedDataset);
+  res.status(200).json(updatedDataset);
 }
 
 async function deleteDataset(req, res) {
