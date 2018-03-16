@@ -1,0 +1,6 @@
+version: 1.0.0
+title: Rainbow Dash Board
+description: A simple data storage and graphing service for IoT devices.
+license:
+  name: MIT
+  url: https://opensource.org/licenses/MIT

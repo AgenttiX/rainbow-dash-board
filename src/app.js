@@ -1,15 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
 const logger = require('./logger')(__filename);
 const config = require('../config');
 const requestLoggerMiddleware =
   require('./middlewares/request-logger-middleware');
 const errorMiddleware = require('./middlewares/error-middleware');
 const routes = require('./routes');
+const swaggerYamlLoader = require('./swagger-yaml-loader');
 
-const swaggerDocument = YAML.load('./docs/swagger/index.yaml');
+const swaggerDocument = swaggerYamlLoader.load('./docs/swagger/index.yaml');
+logger.info('Loaded Swagger documentation');
+logger.silly(JSON.stringify(swaggerDocument));
 
 class App {
   constructor() {

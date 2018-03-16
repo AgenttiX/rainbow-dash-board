@@ -1,0 +1,97 @@
+/datasets:
+  get:
+    tags:
+      - dataset
+    summary: Returns all datasets
+    description: Returns all datasets.
+    responses:
+      200:
+        description: Found datasets
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Dataset'
+      default:
+        $ref: '#/components/responses/error'
+  post:
+    tags:
+      - dataset
+    summary: Creates a new dataset
+    description: |
+      Creates a new dataset.
+
+      Fields `id`, `createdAt` and `updatedAt` will be ignored
+      if included in the supplied dataset.
+    requestBody:
+      description: Dataset to create
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewDataset'
+    responses:
+      200:
+        description: Created dataset
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+      default:
+        $ref: '#/components/responses/error'
+  put:
+    tags:
+      - dataset
+    summary: Replaces a dataset
+    description: |
+      Replaces a dataset. The ID of the dataset will be taken from
+      the `id` field of the supplied dataset.
+
+      Fields `createdAt` and `updatedAt` will be ignored
+      if included in the supplied dataset.
+    requestBody:
+      description: Dataset with which to replace the old one
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Dataset'
+    responses:
+      200:
+        description: New dataset
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+      default:
+        $ref: '#/components/responses/error'
+/datasets/{id}:
+  get:
+    tags:
+      - dataset
+    summary: Returns a single dataset
+    description: Returns a dataset based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathDatasetId'
+    responses:
+      200:
+        description: Found dataset
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+      default:
+        $ref: '#/components/responses/error'
+  delete:
+    tags:
+      - dataset
+    summary: Removes a dataset
+    description: Removes a dataset based on a single ID.
+    parameters:
+      - $ref: '#/components/parameters/pathDatasetId'
+    responses:
+      200:
+        description: OK
+      default:
+        $ref: '#/components/responses/error'

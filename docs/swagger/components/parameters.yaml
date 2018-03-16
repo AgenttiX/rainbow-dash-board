@@ -1,0 +1,8 @@
+pathDatasetId:
+  name: id
+  in: path
+  description: ID of dataset
+  required: true
+  schema:
+    type: integer
+    format: int64
