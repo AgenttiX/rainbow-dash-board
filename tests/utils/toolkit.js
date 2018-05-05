@@ -26,9 +26,9 @@ function createDataset(dataset) {
     .send(dataset);
 }
 
-function updateDataset(dataset) {
+function updateDataset(id, dataset) {
   return request(this.app)
-    .put('/api/v1/datasets')
+    .patch(`/api/v1/datasets/${id}`)
     .send(dataset);
 }
 

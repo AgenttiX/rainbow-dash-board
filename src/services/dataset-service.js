@@ -47,16 +47,12 @@ async function addDataset(dataset) {
   return serviceUtils.toCamelCase(rows[0]);
 }
 
-async function updateDataset(dataset) {
+async function updateDataset(id, dataset) {
   const dbDataset = serviceUtils.toSnakeCase(dataset);
 
   const rows = await db.knex('datasets')
-    .where('id', dbDataset.id)
-    .update({
-      ...dbDataset,
-      updated_at: db.knex.raw('now()'),
-      created_at: undefined,
-    })
+    .where('id', id)
+    .update(serviceUtils.setUpdateTimestamps(db, dbDataset))
     .returning('*');
 
   return serviceUtils.toCamelCase(rows[0]);

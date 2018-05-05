@@ -24,7 +24,16 @@ function toSnakeCase(data) {
   return toCase(data, _.snakeCase);
 }
 
+function setUpdateTimestamps(db, obj) {
+  return {
+    ...obj,
+    updated_at: db.knex.raw('now()'),
+    created_at: undefined,
+  };
+}
+
 module.exports = {
   toCamelCase,
   toSnakeCase,
+  setUpdateTimestamps,
 };

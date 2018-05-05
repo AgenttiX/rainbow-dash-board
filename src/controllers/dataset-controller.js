@@ -36,8 +36,8 @@ async function getDataset(req, res) {
   res.status(200).json(dataset);
 }
 
-async function postDataset(req, res) {
-  logger.silly('datasetController.postDataset');
+async function addDataset(req, res) {
+  logger.silly('datasetController.addDataset');
 
   const dataset = controllerUtils.validate(
     req.body,
@@ -49,15 +49,20 @@ async function postDataset(req, res) {
   res.status(200).json(newDataset);
 }
 
-async function putDataset(req, res) {
-  logger.silly('datasetController.patchDataset');
+async function updateDataset(req, res) {
+  logger.silly('datasetController.updateDataset');
+
+  const { datasetId } = controllerUtils.validate(
+    req.params,
+    datasetParamSchema
+  );
 
   const dataset = controllerUtils.validate(
     req.body,
     datasetBodySchema
   );
 
-  const updatedDataset = await datasetService.updateDataset(dataset);
+  const updatedDataset = await datasetService.updateDataset(datasetId, dataset);
 
   res.status(200).json(updatedDataset);
 }
@@ -78,7 +83,7 @@ async function deleteDataset(req, res) {
 module.exports = {
   getDatasets,
   getDataset,
-  postDataset,
-  putDataset,
+  addDataset,
+  updateDataset,
   deleteDataset,
 };

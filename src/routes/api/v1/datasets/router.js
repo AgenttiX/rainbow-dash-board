@@ -14,12 +14,12 @@ module.exports = function buildRouter(router) {
 
   router.post(
     '/',
-    wrapController(datasetController.postDataset)
+    wrapController(datasetController.addDataset)
   );
 
-  router.put(
-    '/',
-    wrapController(datasetController.putDataset)
+  router.patch(
+    '/:datasetId',
+    wrapController(datasetController.updateDataset)
   );
 
   router.delete(
