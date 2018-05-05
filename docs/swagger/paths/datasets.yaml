@@ -1,4 +1,4 @@
-/datasets:
+/v1/datasets:
   get:
     tags:
       - dataset
@@ -66,7 +66,7 @@
               $ref: '#/components/schemas/Dataset'
       default:
         $ref: '#/components/responses/error'
-/datasets/{id}:
+/v1/datasets/{id}:
   get:
     tags:
       - dataset
