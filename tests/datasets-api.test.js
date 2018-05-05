@@ -6,7 +6,7 @@ const { createToolkit } = require('./utils/toolkit');
 const mocks = require('./utils/mocks');
 const database = require('./utils/database');
 
-describe('/api/v1/pages', () => {
+describe('/api/v1/datasets', () => {
   let app;
   let toolkit;
 
@@ -47,7 +47,23 @@ describe('/api/v1/pages', () => {
   });
 
 
-  it('should update dataset', async () => {
+  it('should update whole dataset', async () => {
+    const dataset = mocks.generateDataset();
+    const newDataset = mocks.generateDataset();
+
+    const createdDataset = await toolkit.createDatasetProc(dataset);
+
+    _.forEach(newDataset, (value, key) => {
+      expect(value).to.not.deep.equal(createdDataset[key]);
+    });
+
+    await toolkit.updateDatasetProc(createdDataset.id, newDataset);
+    const retrievedDataset = await toolkit.getDatasetProc(createdDataset.id);
+
+    expect(retrievedDataset).to.deep.include(newDataset);
+  });
+
+  it('should update dataset partially', async () => {
     const newName = 'New name';
 
     const dataset = mocks.generateDataset();
@@ -57,7 +73,7 @@ describe('/api/v1/pages', () => {
 
     createdDataset.name = newName;
 
-    await toolkit.updateDatasetProc(createdDataset);
+    await toolkit.updateDatasetProc(createdDataset.id, createdDataset);
     const retrievedDataset = await toolkit.getDatasetProc(createdDataset.id);
 
     expect(retrievedDataset.name).to.equal(newName);
