@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const changeCase = require('change-case');
 
 function toCase(data, transformer) {
   if (_.isArray(data)) {
@@ -18,11 +17,11 @@ function toCase(data, transformer) {
 }
 
 function toCamelCase(data) {
-  return toCase(data, changeCase.camelCase);
+  return toCase(data, _.camelCase);
 }
 
 function toSnakeCase(data) {
-  return toCase(data, changeCase.snakeCase);
+  return toCase(data, _.snakeCase);
 }
 
 module.exports = {
