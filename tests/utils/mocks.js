@@ -13,7 +13,7 @@ function generateDataset(opts = {}) {
   datasetNumber++;
   return {
     name: `Test dataset ${datasetNumber}`,
-    tableName: `Data table ${datasetNumber}`,
+    type: 'simpleMeasurement',
     columns: _.range(opts.columnCount).map(
       n => `Column ${n + columnNumber}`
     ),

@@ -18,12 +18,9 @@ Dataset:
 NewDataset:
   required:
     - name
-    - tableName
     - columns
   properties:
     name:
-      type: string
-    tableName:
       type: string
     columns:
       type: array

@@ -22,6 +22,7 @@ async function resetDatabase() {
 }
 
 module.exports = {
+  ...db,
   rollbackDatabase,
   migrateDatabase,
   resetDatabase,

@@ -24,10 +24,10 @@ function toSnakeCase(data) {
   return toCase(data, _.snakeCase);
 }
 
-function setUpdateTimestamps(db, obj) {
+function setUpdateTimestamps(knex, obj) {
   return {
     ...obj,
-    updated_at: db.knex.raw('now()'),
+    updated_at: knex.fn.now(),
     created_at: undefined,
   };
 }
