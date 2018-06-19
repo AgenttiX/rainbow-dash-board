@@ -16,7 +16,7 @@
         "curly": ["error", "multi-line"],
         "comma-dangle": ["error", "always-multiline"],
         "semi": ["error", "always"],
-        "quotes": ["error", "single"],
+        "quotes": ["error", "single", { "avoidEscape": true }],
         "no-process-env": "error",
         "no-console": "error",
         "max-len": ["error", { "code": 80 }],
